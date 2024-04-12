@@ -29,4 +29,12 @@ public class EmployeeService {
     public Employee updateEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
+
+    public void deleteEmployee(Long id) {
+        Employee existsEmployee = this.employeeRepository
+                .findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee by id "+id+" was not found.")
+                );
+        this.employeeRepository.delete(existsEmployee);
+    }
 }
