@@ -25,4 +25,8 @@ public class EmployeeService {
     public Employee findEmployeeById(Long id) {
         return employeeRepository.findEmployeeById(id).orElseThrow(() -> new EmployeeNotFoundException("Employee by id "+id+" was not found."));
     }
+
+    public Employee updateEmployee(Employee employee) {
+        return employeeRepository.save(employee);
+    }
 }
