@@ -1,5 +1,6 @@
 package br.com.ero.employeemanagement.swagger.services;
 
+import br.com.ero.employeemanagement.swagger.exceptions.EmployeeNotFoundException;
 import br.com.ero.employeemanagement.swagger.models.Employee;
 import br.com.ero.employeemanagement.swagger.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,9 @@ public class EmployeeService {
 
     public List<Employee> findAllEmployees() {
         return employeeRepository.findAll();
+    }
+
+    public Employee findEmployeeById(Long id) {
+        return employeeRepository.findEmployeeById(id).orElseThrow(() -> new EmployeeNotFoundException("Employee by id "+id+" was not found."));
     }
 }
