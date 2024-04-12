@@ -1,11 +1,14 @@
 package br.com.ero.employeemanagement.swagger.models;
 
-import jakarta.persistence.*;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -15,6 +18,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@ApiModel(description = "Employee details.")
 public class Employee implements Serializable {
 
     @Serial
@@ -24,6 +28,8 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @ApiModelProperty(notes = "The employee first name.")
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
